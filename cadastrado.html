@@ -3,7 +3,6 @@
 <title>Cadastro</title>
 <link href="estilo.css" rel="stylesheet" type="text/css" />
 <script src="JavaScript2.js"></script>
-
 </head>
 <body>
 
@@ -16,9 +15,6 @@
 		<ul>
 			<li><a href="index.html">Inicial</a></li>
 			<li><a href="cadastro.html">Cadastro</a></li>
-			<li><a href="sobre.html">Sobre</a></li>
-			<li><a href="noticias.html">Noticias</a></li>
-			<li><a href="contato.html">Contato</a></li>
 		</ul>
 		<p>&nbsp;</p>
 		<p>&nbsp;</p>
@@ -28,29 +24,31 @@
 	<div id="conteudo">
 		
 		<h1>Faça seu cadastro aqui</h1>
-  			<label for="fname">Nome:</label><br>
+  			<label for="fname">Nome:</label>
+  			<div id="nome"></div>
+  			<br>
 
-			<label for="fcpf">CPF:</label><br>
+			<label for="fcpf">CPF:</label><div id="cpf"></div><br>
 
-			<label for="frg">RG:</label><br>
+			<label for="frg">RG:</label><div id="rg"></div><br>
 
-			<label for="fsexo">Sexo:</label><br>
+			<label for="fsexo">Sexo:</label><div id="sexo"></div><br>
 
-  			<label for="fendereco">Endereço:</label><br>
+  			<label for="fendereco">Endereço:</label><div id="endereco"></div><br>
 
-			<label for="fnumero">Numero:</label><br>
+			<label for="fnumero">Numero:</label><div id="numero"></div><br>
   			
-			<label for="fbairro">Bairro:</label><br>
+			<label for="fbairro">Bairro:</label><div id="bairro"></div><br>
   			
-			<label for="fcidade">Cidade:</label><br>
+			<label for="fcidade">Cidade:</label><div id="cidade"></div><br>
   		
-			<label for="festado">Estado:</label><br>
+			<label for="festado">Estado:</label><div id="estado"></div><br>
 
-			<label for="fcep">Cep:</label><br>
+			<label for="fcep">Cep:</label><div id="cep"></div><br>
 
-			<label for="ffixo">Telefone Fixo:</label><br>
+			<label for="ffixo">Telefone Fixo:</label><div id="fixo"></div><br>
 
-			<label for="fcelular">Telefone Celular:</label><br>
+			<label for="fcelular">Telefone Celular:</label><div id="celular"></div><br>
 
 			<br>
 			<a href="cadastro.html">Voltar</a>
@@ -60,11 +58,28 @@
 		<div id="rodape">
 		 <p><a href="index.html">Inicio</a> |
 		 <a href="cadastro.html">Cadastro</a> | 
-		 <a href="sobre.html">Sobre</a> | 
-		 <a href="noticias.html">Noticias</a> | 
-		 <a href="contato.html">Contato</a></p>
 		</div>
       </div>
+
+<script type="text/javascript">
+
+
+(function() {
+
+	var url = new URL(location.href);
+
+	var parametros_valores = {}
+	location.search.substr(1).split("&").forEach(function(item) {parametros_valores[item.split("=")[0]] = item.split("=")[1]})
+
+	for(propriedade in parametros_valores){
+		console.log("chave " + propriedade + " valor " + parametros_valores[propriedade]);
+		document.getElementById(propriedade).innerHTML = url.searchParams.get(propriedade);
+
+	}
+
+})();
+
+</script>
 
 </body>
 
